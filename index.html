@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum Digital | Webdevelop</title>
+    <style>
+        body, .drum, .type1, .type2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 1px 1px 1px black;
+        }
+        body {
+            flex-direction: column;
+            height: 100vh;
+            background: #001;
+        }
+        .drum {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            box-sizing: border-box;
+            background-color: black;
+            border: 4px solid whitesmoke;
+        }
+        .type1, .type2 {
+            cursor: pointer;
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+        }
+        .type1 {
+            background: radial-gradient(rgb(194, 174, 44), black);
+            border: 4px solid black;
+            outline: 1px solid white;
+        }
+        .type1:active {
+            background: radial-gradient(white 50%, black);
+        }
+        .type2:active {
+            background: conic-gradient(black,rgb(182, 137, 4),black);
+        }
+        .type2 {
+            margin-left: -70%;
+            background: conic-gradient(rgb(182, 137, 4),black,rgb(182, 137, 4));
+            transition: 1s;
+        }
+        #bass1, #bass2 {
+            margin-top: 35%;
+            width: 150px;
+            height: 150px;
+        }
+        #bass1 {margin-left: -27%;}
+        #bass2 {margin-left: 27%;}
+        #snare {
+            width: 120px;
+            height: 120px;
+        }
+        #floor {
+            width: 130px;
+            height: 130px;
+            margin-left: 60%;
+            margin-top: 10%;
+        }
+        #tom1 {
+            margin-left: -35%;
+            margin-top: -10%;
+        }
+        #tom2 {
+            margin-top: -30%;
+        }
+        #tom3 {
+            margin-top: -10%;
+            margin-left: 35%;
+        }
+        #openHit {
+            margin-top: 10%;
+        }
+        #closeHit {
+            margin-left: -75%;
+            margin-top: -10%;
+        }
+        #ride1 {
+            margin-top: -32%;
+            margin-left: 65%;
+        }
+        #crash1 {
+            margin-top: -40%;
+            margin-left: -30%;
+        }
+        #crash2 {
+            margin-top: -40%;
+            margin-left: 30%;
+        }
+    </style>
+</head>
+<body onkeypress="mainKey(event);">
+    <div class="drum">
+        <div class="type1" id="bass1">BASS 1</div>
+        <div class="type1" id="bass2">BASS 2</div>
+        <div class="type1" id="snare">SNARE</div>
+        <div class="type1" id="tom1">TOM 1</div>
+        <div class="type1" id="tom2">TOM 2</div>
+        <div class="type1" id="tom3">TOM 3</div>
+        <div class="type1" id="floor">FLOOR</div>
+        <div class="type2" id="openHit">OPEN HIT</div>
+        <div class="type2" id="closeHit">CLOSE HIT</div>
+        <div class="type2" id="crash1">CRASH 1</div>
+        <div class="type2" id="crash2">CRASH 2</div>
+        <div class="type2" id="ride1">RIDE</div>
+    </div>
+    <script>
+        var bass1 = document.getElementById("bass1");
+        var bass2 = document.getElementById("bass2");
+        var snareB = document.getElementById("snare");
+        var tom1B = document.getElementById("tom1");
+        var tom2B = document.getElementById("tom2");
+        var tom3B = document.getElementById("tom3");
+        var floorB = document.getElementById("floor");
+        var openHitB = document.getElementById("openHit");
+        var closeHitB = document.getElementById("closeHit");
+        var crash1B = document.getElementById("crash1");
+        var crash2B = document.getElementById("crash2");
+        var ride1b = document.getElementById("ride1");
+
+        var active = "radial-gradient(white 50%, black)";
+        var noActive = "radial-gradient(rgb(194, 174, 44), black)";
+
+        var activeB = "conic-gradient(black,rgb(182, 137, 4),black)";
+        var noActiveB = "conic-gradient(rgb(182, 137, 4),black,rgb(182, 137, 4))";
+        // MY AUDIO
+        var bass = new Audio("audio/bass.mp3");
+        var snare = new Audio("audio/snare.mp3");
+        var tom1 = new Audio("audio/tom1.mp3");
+        var tom2 = new Audio("audio/tom2.mp3");
+        var tom3 = new Audio("audio/tom3.mp3");
+        var floor = new Audio("audio/floor.mp3");
+        var openHit = new Audio("audio/openHithat.mp3");
+        var closeHit = new Audio("audio/closeHithat.mp3");
+        var crash1 = new Audio("audio/crash1.mp3");
+        var crash2 = new Audio("audio/crash2.mp3");
+        var ride1 = new Audio("audio/ride1.mp3");
+
+        function mainKey(e){
+            // ------>>>>> TYPEONE
+            if (e.key == "v"){
+                bass.play();
+                bass.currentTime = 0;
+
+                bass1.style.background = active;
+                setTimeout(() => {bass1.style.background = noActive;}, 100);
+            }
+            if (e.key == "b"){
+                bass.play();
+                bass.currentTime = 0;
+
+                bass2.style.background = active;
+                setTimeout(() => {bass2.style.background = noActive;}, 100);
+            }
+            if (e.key == "g"){
+                snare.play();
+                snare.currentTime = 0;
+
+                snareB.style.background = active;
+                setTimeout(() => {snareB.style.background = noActive;}, 100);
+            }
+            if (e.key == "h"){
+                snare.play();
+                snare.currentTime = 0;
+
+                snareB.style.background = active;
+                setTimeout(() => {snareB.style.background = noActive;}, 100);
+            }
+            if (e.key == "f"){
+                tom1.play();
+                tom1.currentTime = 0;
+
+                tom1B.style.background = active;
+                setTimeout(() => {tom1B.style.background = noActive;}, 100);
+            }
+            if (e.key == "t"){
+                tom2.play();
+                tom2.currentTime = 0;
+
+                tom2B.style.background = active;
+                setTimeout(() => {tom2B.style.background = noActive;}, 100);
+            }
+            if (e.key == "j"){
+                tom3.play();
+                tom3.currentTime = 0;
+
+                tom3B.style.background = active;
+                setTimeout(() => {tom3B.style.background = noActive;}, 100);
+            }
+            if (e.key == "k"){
+                floor.play();
+                floor.currentTime = 0;
+
+                floorB.style.background = active;
+                setTimeout(() => {floorB.style.background = noActive;}, 100);
+            }
+            // ------>>>>> TYPETWO
+            if (e.key == "d"){
+                openHit.play();
+                openHit.currentTime = 0;
+
+                openHitB.style.background = activeB;
+                setTimeout(() => {openHitB.style.background = noActiveB;}, 100);
+            }
+            if (e.key == "c" || e.key == "x"){
+                closeHit.play();
+                closeHit.currentTime = 0;
+
+                closeHitB.style.background = activeB;
+                setTimeout(() => {closeHitB.style.background = noActiveB;}, 100);
+            }
+            if (e.key == "r"){
+                crash1.play();
+                crash1.currentTime = 0;
+
+                crash1B.style.background = activeB;
+                setTimeout(() => {crash1B.style.background = noActiveB;}, 100);
+            }
+            if (e.key == "y"){
+                crash2.play();
+                crash2.currentTime = 0;
+
+                crash2B.style.background = activeB;
+                setTimeout(() => {crash2B.style.background = noActiveB;}, 100);
+            }
+            if (e.key == "u"){
+                ride1.play();
+                ride1.currentTime = 0;
+
+                ride1b.style.background = activeB;
+                setTimeout(() => {ride1b.style.background = noActiveB;}, 100);
+            }
+        }
+    </script>
+</body>
+</html>
